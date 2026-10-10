@@ -51,11 +51,11 @@ function update_script() {
       ;;
     cpu)
       $STD uv pip install --python /opt/vllm/bin/python \
-        "https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cpu-cp38-abi3-manylinux_2_34_x86_64.whl" \
+        "https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cpu-cp38-abi3-manylinux_2_39_x86_64.whl" \
         --torch-backend cpu
       ;;
     *)
-      $STD uv pip install --python /opt/vllm/bin/python --upgrade vllm
+      $STD uv pip install --python /opt/vllm/bin/python --upgrade vllm "triton@https://github.com/triton-lang/triton-cpu/releases/download/v3.8.0/triton-3.8.0+cpu-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" torch
       ;;
     esac
     msg_ok "Updated vLLM (${VLLM_BACKEND})"
