@@ -55,7 +55,7 @@ function update_script() {
         --torch-backend cpu
       ;;
     *)
-      $STD uv pip install --python /opt/vllm/bin/python --upgrade vllm "triton@https://github.com/triton-lang/triton-cpu/releases/download/v3.8.0/triton-3.8.0+cpu-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl" torch
+      $STD uv pip install --python /opt/vllm/bin/python --upgrade vllm 
       ;;
     esac
     msg_ok "Updated vLLM (${VLLM_BACKEND})"
