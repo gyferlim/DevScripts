@@ -45,7 +45,7 @@ msg_info "Installing vLLM (${var_backend}, Patience)"
 $STD uv venv --python 3.12 /opt/vllm
 case "$var_backend" in
 cuda)
-  $STD uv pip install --python /opt/vllm/bin/python vllm
+  $STD uv pip install --python /opt/vllm/bin/python vllm 
   ;;
 rocm)
   $STD uv pip install --python /opt/vllm/bin/python vllm \
@@ -57,7 +57,7 @@ cpu)
     exit 1
   fi
   $STD uv pip install --python /opt/vllm/bin/python \
-    "https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cpu-cp38-abi3-manylinux_2_34_x86_64.whl" \
+    "https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cpu-cp38-abi3-manylinux_2_39_x86_64.whl" \
     --torch-backend cpu
   ;;
 *)
@@ -65,7 +65,7 @@ cpu)
   exit 1
   ;;
 esac
-echo "$var_backend" >/opt/vllm/.backend
+echo "cuda" >/opt/vllm/.backend
 cat <<EOF >~/.vllm
 ${VLLM_VERSION}
 EOF
